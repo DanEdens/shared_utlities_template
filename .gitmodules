@@ -1,0 +1,3 @@
+[submodule "sitecheck"]
+	path = sitecheck
+	url = git@github.com:DanEdens/sitecheck.git

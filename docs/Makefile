@@ -8,6 +8,12 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
+confluence_server_url ?=
+confluence_server_key ?=
+confluence_server_user ?=
+confluence_server_pass ?=
+confluence_server_publish ?=
+
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

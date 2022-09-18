@@ -32,6 +32,8 @@ extensions = [
         'sphinxcontrib.confluencebuilder'
         ]
 
+source_suffix = {'.rst': 'restructuredtext'}
+
 latex_elements = {
         # The paper size ('letterpaper' or 'a4paper').
         'papersize':    'letterpaper',
@@ -43,23 +45,35 @@ latex_elements = {
         'figure_align': 'htbp',
         }
 
-
 templates_path = ['_templates']
 exclude_patterns = ['build/*']
 
-# Publish after build, defaults to False
-confluence_publish = os.environ.get("confluence_server_url", False)
-
 # Import enviroment settings
-confluence_space_name = os.environ.get("confluence_server_name", "danedens")
+confluence_space_key = os.environ.get("confluence_server_key", "danedens")
 confluence_server_url = os.environ.get("confluence_server_url", "localhost")
-confluence_server_user = os.environ.get("confluence_server_user", 'danedens31@gmail.com')
-confluence_server_pass = os.environ.get("confluence_server_pass", 'Not Set')
+confluence_server_user = os.environ.get("confluence_server_user",
+                                        'danedens31@gmail.com')
+confluence_server_pass = os.environ.get("confluence_server_pass", False)
+
+if confluence_server_pass:
+    # Publish after build, defaults to False, requires pass is set
+    confluence_publish = os.environ.get("confluence_server_publish", False)
+else:
+    confluence_publish = False
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+# extensions.append("sphinxjp.themes.basicstrap")
+html_themes = (
+        'sphinx_material', 'alabaster', 'sphinx_rtd_theme',
+        'furo', 'sphinx_book_theme', 'pydata_sphinx_theme',
+        'press', 'piccolo_theme', 'insegel', 'sphinxawesome_theme',
+        'basicstrap', 'cloud', 'sphinx_documatt_theme', 'groundwork',
+        'sphinx_typo3_theme'
+        )
+
+html_theme = os.environ.get("confluence_theme", 'sphinx_material')
 html_short_title = 'testkitdocs'
 html_static_path = ['_static']
 html_show_sourcelink = False

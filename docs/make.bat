@@ -7,6 +7,24 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
+if "%confluence_server_url%" == "" (
+    set confluence_server_url=https://danedens.atlassian.net/wiki/home
+)
+if "%confluence_server_key%" == "" (
+    set confluence_server_key = False
+)
+if "%confluence_server_user%" == "" (
+    set confluence_server_user = dane@minim.com
+)
+if "%confluence_server_pass%" == "" (
+    echo "Pass not set. Please set confluence_server_pass"
+    exit /B 5
+)
+if "%confluence_server_publish%" == "" (
+    echo Confluence Publish disabled 
+    set confluence_server_publish = False
+)
+
 set SOURCEDIR=source
 set BUILDDIR=build
 

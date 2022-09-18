@@ -1,3 +1,6 @@
 [submodule "sitecheck"]
 	path = sitecheck
 	url = git@github.com:DanEdens/sitecheck.git
+[submodule "ScanData"]
+	path = ScanData
+	url = git@github.com:DanEdens/ScanData.git

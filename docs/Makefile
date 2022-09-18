@@ -8,7 +8,7 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
-confluence_server_url ?= https://danedens.atlassian.net/wiki/home
+confluence_server_url ?= https://danedens.atlassian.net/wiki/home/
 confluence_server_key ?= 
 confluence_server_user ?= danedens
 confluence_server_pass ?=

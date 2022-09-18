@@ -8,7 +8,7 @@ if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
 if "%confluence_server_url%" == "" (
-    set confluence_server_url=https://danedens.atlassian.net/wiki/home
+    set confluence_server_url=https://danedens.atlassian.net/wiki/home/
 )
 if "%confluence_server_key%" == "" (
     set confluence_server_key = False

@@ -1,3 +1,4 @@
 rinohtype 
 sphinxcontrib-confluencebuilder 
 sphinx 
+sphinx-material 

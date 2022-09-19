@@ -11,5 +11,7 @@ Welcome to MinimTestKit's documentation!
    :caption: Contents:
 
    readme
+   arguments
+   External Refrences
 
 

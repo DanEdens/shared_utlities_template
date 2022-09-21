@@ -1,18 +1,18 @@
 # Minim TestKit  
 
-
-Init template  
-
+Command and Control hub for Test automation.  
 
 
-# Roadmap  
-
-1. Documentation stack  
+1. Documentation
     1. Sphinx => Confluence  
-    1. CodeCommit => Jira  
+    2. CodeCommit => Jira  
 2. Utilities and Environment  
-    1. messenger => mqtt => AWS  
-    2. mobile client ?= ["tasker", "pydroid3", "termux", "etc"]  
+    1. messenger = mqtt => AWS  
+    2. mobile client 
+        1. tasker
+        2. pydroid3
+        3. termux
+            
     3. API gateway == Join || mqtt xargs pipe fallback => Tasker  
     4. Devops stack == Jenkins || AWS  
 3. Planning  

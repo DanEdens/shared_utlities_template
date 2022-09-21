@@ -14,6 +14,7 @@ Related Documentation for further reading
 Tool                      Docs
 =======================  ================================================================
 Github projects           https://github.com/stars/DanEdens/lists/wifi
+Python Jira               https://jira.readthedocs.io/
 Selenium                  https://www.selenium.dev/selenium-ide/docs/en/introduction/getting-started
 Puppeteer(NodeJs)         https://github.com/puppeteer/puppeteer
 Pyppeteer(python)         https://github.com/miyakogi/pyppeteer

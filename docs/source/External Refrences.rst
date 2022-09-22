@@ -1,11 +1,11 @@
 .. tocdepth: 1
 
 ==========================
-MinimTestKit External Refrence
+MinimTestKit External Reference
 ==========================
 
 
-Documentation refrence
+Documentation reference
 ==========================
 
 Related Documentation for further reading
@@ -13,9 +13,11 @@ Related Documentation for further reading
 =======================  ================================================================
 Tool                      Docs
 =======================  ================================================================
-Github projects           https://github.com/stars/DanEdens/lists/wifi
+Explored Github repos     https://github.com/stars/DanEdens/lists/wifi
+Confluence                https://github.com/stars/DanEdens/lists/confluence
+Jenkins                   https://github.com/stars/DanEdens/lists/jenkins
 Python Jira               https://jira.readthedocs.io/
-Selenium                  https://www.selenium.dev/selenium-ide/docs/en/introduction/getting-started
+Selenium                  https://www.selenium.dev/
 Puppeteer(NodeJs)         https://github.com/puppeteer/puppeteer
 Pyppeteer(python)         https://github.com/miyakogi/pyppeteer
 Headless Mode             https://developers.google.com/web/updates/2017/04/headless-chrome

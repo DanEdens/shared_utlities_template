@@ -9,15 +9,14 @@ Command and Control hub for Test automation.
 2. Utilities and Environment  
     1. messenger = mqtt => AWS  
     2. mobile client 
-        1. tasker
-        2. pydroid3
-        3. termux
-            
+        1. termux => tasker  
+        2. native  
+        3. pydroid3  
     3. API gateway == Join || mqtt xargs pipe fallback => Tasker  
     4. Devops stack == Jenkins || AWS  
 3. Planning  
     1. Requirements
-    2. Access control and Security
+    2. Security
     3. 
 
 

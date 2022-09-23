@@ -1,6 +1,6 @@
 import os
 import argparse
-import devices
+from TestKit import devices
 import paho.mqtt.client as paho
 
 

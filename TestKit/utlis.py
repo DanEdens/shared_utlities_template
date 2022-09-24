@@ -1,7 +1,6 @@
 """
     Minim Internal testing Software
     Utilities Package for TestKit
-
 """
 import errno
 import logging
@@ -11,7 +10,8 @@ from pathlib import Path
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 
-client = mqtt.Client(os.environ.get('TESTKIT_DENA', os.environ.get('USERPROFILE')))
+client = mqtt.Client(
+    os.environ.get('TESTKIT_DENA', os.environ.get('USERPROFILE')))
 hostname = os.environ.get('AWSIP', 'localhost')
 port = int(os.environ.get('AWSPORT', 3001))
 client.connect(hostname, port)
@@ -38,12 +38,12 @@ def make_logger(name) -> object:
 
     if os.environ.get('TESTKIT_LOG', True):
         _log = ensure_exists(
-            Path(os.environ['Output']).joinpath(
-                f"data//{filedate}//TestKit.log"
-                ))
+                Path(os.environ['Output']).joinpath(
+                        f"data//{filedate}//TestKit.log"
+                        ))
         with open(_log, 'a') as file:
             file.write(
-                f'\nRun Log for {filedate}\n=============================\n')
+                    f'\nRun Log for {filedate}\n=============================\n')
         logging.basicConfig(filename=_log, level=None, format=_format)
     else:
         logging.basicConfig(level=None, format=_format)
@@ -154,7 +154,7 @@ def post(topic, payload, retain=False):
         client.publish(topic, payload, retain)
     except ValueError:
         logger.info(
-            f"pub Failed because of wildcard: {str(topic)}=:={str(payload)}")
+                f"pub Failed because of wildcard: {str(topic)}=:={str(payload)}")
         logger.info(f"Attempting fix...")
         try:
             tame_t = topic.replace("+", "_")

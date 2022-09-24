@@ -3,3 +3,5 @@ sphinxcontrib-confluencebuilder
 sphinx 
 sphinx-material 
 jira 
+paho.mqtt
+

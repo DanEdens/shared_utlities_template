@@ -43,5 +43,5 @@ def parseMessage(msg):
 
 
 if __name__ == "__main__":
-    DeNa = fetch_config(os.environ.get('DeNa'))
+    DeNa = fetch_config()
     parseMessage(sys.argv[1])

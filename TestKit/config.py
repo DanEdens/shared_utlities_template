@@ -140,31 +140,32 @@ class DeNa:
     """
     pass
 
-    def registerDevice(self, Name):
-        """
-        Adds Device name to agent pool stored as testkit/devicelist
-        """
-        _device = fetch_config(Name)
-        DeNa.deviceList = _device.fetchData('deviceList')
 
-        if Name in DeNa.deviceList:
-            logger.debug(f'Device registration confirmed using: {Name}')
-        else:
-            logger.debug(f'Registering as new device: {Name}')
-            fetch_config.pubFullConfig(Name)
+def registerDevice(Name):
+    """
+    Adds Device name to agent pool stored as testkit/devicelist
+    """
+    _device = fetch_config()
+    DeNa.deviceList = _device.fetchData('deviceList')
 
-        # DeNa.deviceType = _device.fetchData('deviceType')
-        # DeNa.testList = _device.fetchData('testList')
-        # DeNa.status = _device.fetchData('status')
-        # DeNa.force = _device.fetchData('force')
+    if Name in DeNa.deviceList:
+        logger.debug(f'Device registration confirmed using: {Name}')
+    else:
+        logger.debug(f'Registering as new device: {Name}')
+        fetch_config.pubFullConfig(Name)
+
+    # DeNa.deviceType = _device.fetchData('deviceType')
+    # DeNa.testList = _device.fetchData('testList')
+    # DeNa.status = _device.fetchData('status')
+    # DeNa.force = _device.fetchData('force')
 
 
 class fetch_config:
     """ Create's tuple object from given section [DeNa] """
 
-    def __init__(self, deviceName: str):
+    def __init__(self):
         self.isDev = os.environ.get('TESTKIT_DEVMODE', False)
-        self.DeNa = deviceName
+        self.DeNa = os.environ.get('DeNa', os.environ.get('COMPUTERNAME'))
         self.deviceType = ''
         self.targetSSID = ''
         self.testList = ''

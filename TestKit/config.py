@@ -3,13 +3,13 @@
     Config Package for TestKit
 """
 import configparser
-import logging
 import os.path
 import subprocess
 import sys
 import paho.mqtt as mqtt
+from . import utlis
 
-logger = logging.getLogger('config')
+logger = utlis.makeLogger('config')
 devModeDeviceList = os.environ.get('ROOT_DIR', '~') + '/devModeDeviceList.ini'
 
 

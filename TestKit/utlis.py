@@ -16,10 +16,10 @@ hostname = os.environ.get('AWSIP', 'localhost')
 port = int(os.environ.get('AWSPORT', 3001))
 client.connect(hostname, port)
 logger = logging.getLogger('utlis')
-filedate = os.environ['filedate']
+fileDate = os.environ['filedate']
 
 
-def make_logger(name) -> object:
+def makeLogger(name) -> object:
     """
     Create the project wide logger.
     Sets Output level from Argument flags and if output should be directed
@@ -37,13 +37,13 @@ def make_logger(name) -> object:
     log = logging.getLogger(name)
 
     if os.environ.get('TESTKIT_LOG', True):
-        _log = ensure_exists(
+        _log = ensureExists(
                 Path(os.environ['Output']).joinpath(
-                        f"data//{filedate}//TestKit.log"
+                        f"data//{fileDate}//TestKit.log"
                         ))
         with open(_log, 'a') as file:
             file.write(
-                    f'\nRun Log for {filedate}\n=============================\n')
+                    f'\nRun Log for {fileDate}\n=============================\n')
         logging.basicConfig(filename=_log, level=None, format=_format)
     else:
         logging.basicConfig(level=None, format=_format)
@@ -53,17 +53,15 @@ def make_logger(name) -> object:
     else:
         log.setLevel(logging.INFO)
 
-    myHandler = MQTTHandler(topic=f'testkit/{name}')
+    myHandler = mqttHandler(topic=f'testkit/{name}')
     log.addHandler(myHandler)
     return log
 
 
-def remove_file(*args):
+def removeFile(*args):
     """
     Removes Old copy of **file** is file exists
-    :param file: File to be replaced
     :return: none
-
     """
     for file in args:
         try:
@@ -73,14 +71,20 @@ def remove_file(*args):
             pass
 
 
-def line_prepender(filename, line):
+def linePrepender(filename, line):
+    """
+    Prepends data for
+    :param filename:
+    :param line:
+    :return:
+    """
     with open(filename, 'r+') as f:
         content = f.read()
         f.seek(0, 0)
         f.write(line.rstrip('\r\n') + '\n' + content)
 
 
-def ensure_exists(path):
+def ensureExists(path):
     """
     Accepts path to file, then creates the directory path if it does not exist
     :param path:
@@ -95,14 +99,14 @@ def ensure_exists(path):
     return path
 
 
-class MQTTHandler(logging.Handler):
+class mqttHandler(logging.Handler):
     """
     A handler class which writes logging records, appropriately formatted,
     to a MQTT server to a topic.
     """
 
     def __init__(self,
-                 _hostname=hostname,
+                 _hostName=hostname,
                  topic='testkit/log',
                  qos=0, retain=True,
                  _port=port,
@@ -117,7 +121,7 @@ class MQTTHandler(logging.Handler):
         self.topic = topic
         self.qos = qos
         self.retain = retain
-        self.hostname = _hostname
+        self.hostname = _hostName
         self.port = _port
         self.client_id = client_id
         self.keepalive = keepalive

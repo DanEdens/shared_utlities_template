@@ -13,6 +13,23 @@ logger = logging.getLogger('config')
 devModeDeviceList = os.environ.get('ROOT_DIR', '~') + '/devModeDeviceList.ini'
 
 
+def postData(msgs):
+    """
+    Pub multible messages in same session
+    :param msgs: dict
+        {
+            'topic':   f'testkit/config/{DeNa}/var',
+            'payload': config[DeNa]['name'],
+            'retain':  True
+        },
+    """
+    mqtt.publish.multiple(
+            msgs,
+            hostname=os.environ.get('AWSIP'),
+            port=os.environ.get('AWSPORT')
+            )
+
+
 def edit_txtfile(file=devModeDeviceList, header=None):
     """
     Subprocess edit Project configuration file in notepad.
@@ -117,21 +134,29 @@ def read_config_file():
     return config
 
 
-def postData(msgs):
+class DeNa:
     """
-    Pub multible messages in same session
-    :param msgs: dict
-        {
-            'topic':   f'testkit/config/{DeNa}/var',
-            'payload': config[DeNa]['name'],
-            'retain':  True
-        },
+    Retrieves and handles device config and system information
     """
-    mqtt.publish.multiple(
-            msgs,
-            hostname=os.environ.get('AWSIP'),
-            port=os.environ.get('AWSPORT')
-            )
+    pass
+
+    def registerDevice(self, Name):
+        """
+        Adds Device name to agent pool stored as testkit/devicelist
+        """
+        _device = fetch_config(Name)
+        DeNa.deviceList = _device.fetchData('deviceList')
+
+        if Name in DeNa.deviceList:
+            logger.debug(f'Device registration confirmed using: {Name}')
+        else:
+            logger.debug(f'Registering as new device: {Name}')
+            fetch_config.pubFullConfig(Name)
+
+        # DeNa.deviceType = _device.fetchData('deviceType')
+        # DeNa.testList = _device.fetchData('testList')
+        # DeNa.status = _device.fetchData('status')
+        # DeNa.force = _device.fetchData('force')
 
 
 class fetch_config:
@@ -140,8 +165,8 @@ class fetch_config:
     def __init__(self, deviceName: str):
         self.isDev = os.environ.get('TESTKIT_DEVMODE', False)
         self.DeNa = deviceName
-        self.targetSSID = ''
         self.deviceType = ''
+        self.targetSSID = ''
         self.testList = ''
         self.status = 'Unset'
         self.force = False
@@ -161,6 +186,7 @@ class fetch_config:
     def mqttConfig(self):
         self.DeNa = self.fetchData('DeNa')
         self.deviceType = self.fetchData('deviceType')
+        self.targetSSID = self.fetchData('targetSSID')
         self.testList = self.fetchData('testlist')
         self.status = self.fetchData('status')
         self.force = self.fetchData('force')
@@ -169,45 +195,44 @@ class fetch_config:
     def fileConfig(self):
         config = configparser.ConfigParser()
         config.read(devModeDeviceList)
-        self.DeNa = config[self.DeNa]['name']
+        self.DeNa = config[self.DeNa]['DeNa']
         self.deviceType = config[self.DeNa]['deviceType']
+        self.targetSSID = config[self.DeNa]['targetSSID']
         self.testList = config[self.DeNa]['testList']
         self.status = config[self.DeNa]['status']
         self.force = config[self.DeNa]['force']
         return self
 
-
-class pubFullConfig:
-    def __init__(self):
-        projects = read_config_file()
-
-        config = configparser.ConfigParser()
-        config.read(devModeDeviceList)
-        for project in projects.sections():
-            postData([
-                    {
-                            'topic':   f'teskit/config/{self.DeNa}/name',
-                            'payload': config[self.DeNa]['name'],
-                            'retain':  True
-                            },
-                    {
-                            'topic':   f'teskit/config/{project}/deviceType',
-                            'payload': config[self.DeNa]['deviceType'],
-                            'retain':  True
-                            },
-                    {
-                            'topic':   f'teskit/config/{project}/testList',
-                            'payload': config[self.DeNa]['testList'],
-                            'retain':  True
-                            },
-                    {
-                            'topic':   f'teskit/config/{self.DeNa}/status',
-                            'payload': config[self.DeNa]['status'],
-                            'retain':  True
-                            },
-                    {
-                            'topic':   f'teskit/config/{self.DeNa}/force',
-                            'payload': config[self.DeNa]['force'],
-                            'retain':  True
-                            }
-                    ])
+    def pubFullConfig(self):
+        postData([
+                {
+                        'topic':   f'teskit/{self.DeNa}/DeNa',
+                        'payload': self.DeNa,
+                        'retain':  True
+                        },
+                {
+                        'topic':   f'teskit/{self.DeNa}/deviceType',
+                        'payload': self.deviceType,
+                        'retain':  True
+                        },
+                {
+                        'topic':   f'teskit/{self.DeNa}/targetSSID',
+                        'payload': self.targetSSID,
+                        'retain':  True
+                        },
+                {
+                        'topic':   f'teskit/{self.DeNa}/testList',
+                        'payload': self.testList,
+                        'retain':  True
+                        },
+                {
+                        'topic':   f'teskit/{self.DeNa}/status',
+                        'payload': self.status,
+                        'retain':  True
+                        },
+                {
+                        'topic':   f'teskit/{self.DeNa}/force',
+                        'payload': self.force,
+                        'retain':  True
+                        }
+                ])

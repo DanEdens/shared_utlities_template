@@ -1,8 +1,12 @@
-import os
 import argparse
+import os
+import sys
 from TestKit import devices
-import paho.mqtt.client as paho
 
+os.environ['ROOT_DIR'] = os.path.dirname(os.path.abspath(__file__))
+os.environ['bin'] = os.path.join(os.environ['ROOT_DIR'], '.bin')
+sys.path.insert(0, os.environ['ROOT_DIR'])
+sys.path.insert(1, os.environ['bin'])
 
 parser = argparse.ArgumentParser(
         description="Command and Control hub for Test automation. ",
@@ -32,11 +36,4 @@ parser.add_argument('-t', '--test',
                     choices=devices.testList,
                     help='Only output data for given group')
 
-
 args = parser.parse_args()
-outStyle = args.output
-
-
-client = paho.Client(args.user, clean_session=True)
-
-client.connect(args.address, int(args.port))

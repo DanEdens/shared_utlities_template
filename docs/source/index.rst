@@ -13,5 +13,6 @@ Welcome to MinimTestKit's documentation!
    readme
    arguments
    External Refrences
+   docstringtest
 
 

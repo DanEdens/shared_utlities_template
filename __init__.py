@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import os
 import sys
 from TestKit import devices
@@ -7,6 +8,9 @@ os.environ['ROOT_DIR'] = os.path.dirname(os.path.abspath(__file__))
 os.environ['bin'] = os.path.join(os.environ['ROOT_DIR'], '.bin')
 sys.path.insert(0, os.environ['ROOT_DIR'])
 sys.path.insert(1, os.environ['bin'])
+
+today = datetime.datetime.now()
+os.environ['filedate'] = today.strftime("%Y-%m-%d")
 
 parser = argparse.ArgumentParser(
         description="Command and Control hub for Test automation. ",

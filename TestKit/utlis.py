@@ -2,6 +2,7 @@
     Minim Internal testing Software
     Utilities Package for TestKit
 """
+import datetime
 import errno
 import logging
 import os
@@ -16,7 +17,8 @@ hostname = os.environ.get('AWSIP', 'localhost')
 port = int(os.environ.get('AWSPORT', 3001))
 client.connect(hostname, port)
 logger = logging.getLogger('utlis')
-fileDate = os.environ['filedate']
+os.environ['ROOT_DIR'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..' )
+fileDate = datetime.datetime.now().strftime("%Y-%m-%d")
 
 
 def makeLogger(name) -> object:
@@ -38,7 +40,7 @@ def makeLogger(name) -> object:
 
     if os.environ.get('TESTKIT_LOG', True):
         _log = ensureExists(
-                Path(os.environ['Output']).joinpath(
+                Path(os.environ['ROOT_DIR']).joinpath(
                         f"data//{fileDate}//TestKit.log"
                         ))
         with open(_log, 'a') as file:

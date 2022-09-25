@@ -1,11 +1,16 @@
-import logging
+"""
+    Minim Internal testing Software
+    Main Package for TestKit
+"""
 import os
 import subprocess
 import sys
 
+from TestKit.utlis import makeLogger
+from . import __init__ as thread
 from TestKit.config import fetch_config
 
-logger = logging.getLogger('testkit')
+logger = makeLogger('testkit')
 
 varlist = [
         'DeNa'
@@ -43,5 +48,9 @@ def parseMessage(msg):
 
 
 if __name__ == "__main__":
-    DeNa = fetch_config()
-    parseMessage(sys.argv[1])
+    if thread.args.server:
+        print(sys.argv)
+        # parseMessage(sys.argv[2])
+    elif thread.args.post-docs:
+        print('Failed')
+        # DeNa = fetch_config()

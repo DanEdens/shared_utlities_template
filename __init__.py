@@ -31,9 +31,14 @@ parser.add_argument('-d', '--device',
                     choices=devices.deviceList,
                     help='Only output data for given group')
 
+parser.add_argument('--server', action='store_true',
+                    default=os.environ.get("testkit_server", False),
+                    help='')
+
 parser.add_argument('-t', '--test',
                     default=os.environ.get("testkit_test", 'all'),
                     choices=devices.testList,
                     help='Only output data for given group')
 
 args = parser.parse_args()
+print(args)

@@ -11,7 +11,7 @@ import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 
 client = mqtt.Client(
-    os.environ.get('TESTKIT_DENA', os.environ.get('USERPROFILE')))
+        os.environ.get('TESTKIT_DENA', os.environ.get('USERPROFILE')))
 hostname = os.environ.get('AWSIP', 'localhost')
 port = int(os.environ.get('AWSPORT', 3001))
 client.connect(hostname, port)
@@ -105,18 +105,19 @@ class mqttHandler(logging.Handler):
     to a MQTT server to a topic.
     """
 
-    def __init__(self,
-                 _hostName=hostname,
-                 topic='testkit/log',
-                 qos=0, retain=True,
-                 _port=port,
-                 client_id='',
-                 keepalive=60,
-                 will=None,
-                 auth=None,
-                 tls=None,
-                 protocol=3,
-                 transport='tcp'):
+    def __init__(
+            self,
+            _hostName=hostname,
+            topic='testkit/log',
+            qos=0, retain=True,
+            _port=port,
+            client_id='',
+            keepalive=60,
+            will=None,
+            auth=None,
+            tls=None,
+            protocol=3,
+            transport='tcp'):
         logging.Handler.__init__(self)
         self.topic = topic
         self.qos = qos
@@ -137,12 +138,13 @@ class mqttHandler(logging.Handler):
         cleanly.
         """
         msg = self.format(record)
-        publish.single(self.topic, msg, self.qos, self.retain,
-                       hostname=self.hostname, port=self.port,
-                       client_id=self.client_id,
-                       keepalive=self.keepalive,
-                       will=self.will, auth=self.auth, tls=self.tls,
-                       protocol=self.protocol, transport=self.transport)
+        publish.single(
+                self.topic, msg, self.qos, self.retain,
+                hostname=self.hostname, port=self.port,
+                client_id=self.client_id,
+                keepalive=self.keepalive,
+                will=self.will, auth=self.auth, tls=self.tls,
+                protocol=self.protocol, transport=self.transport)
 
 
 def post(topic, payload, retain=False):

@@ -1,3 +1,4 @@
 *.idea
 docs/source/_build/*
 docs/build
+*.pyc

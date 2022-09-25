@@ -11,11 +11,7 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="EXECUTE_IN_TERMINAL" value="true" />
     <option name="EXECUTE_SCRIPT_FILE" value="true" />
-    <envs>
-      <env name="TESTKIT_DEVMODE" value="True" />
-      <env name="AWSIP" value="Localhost" />
-      <env name="AWSPORT" value="3001" />
-    </envs>
+    <envs />
     <method v="2" />
   </configuration>
 </component>

@@ -1,0 +1,3 @@
+[submodule "cdroutertestkit"]
+	path = cdroutertestkit
+	url = https://DanEdens@bitbucket.org/danedens/cdroutertestkit.git

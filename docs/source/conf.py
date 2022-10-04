@@ -48,18 +48,32 @@ latex_elements = {
 templates_path = ['_templates']
 exclude_patterns = ['build/*']
 
-# Import enviroment settings
-confluence_space_key = os.environ.get("confluence_server_key", "danedens")
-confluence_server_url = os.environ.get("confluence_server_url", "localhost")
-confluence_server_user = os.environ.get("confluence_server_user",
-                                        'danedens31@gmail.com')
-confluence_server_pass = os.environ.get("confluence_server_pass", False)
 
-if confluence_server_pass:
-    # Publish after build, defaults to False, requires pass is set
-    confluence_publish = os.environ.get("confluence_server_publish", False)
-else:
-    confluence_publish = False
+SPHINXBUILD = "sphinx-build"
+confluence_server_url = "https://minimco.atlassian.net/wiki"
+confluence_space_key = "DVT"
+confluence_parent_page = "AutomationTest"
+confluence_server_user = "dane@minim.com"
+confluence_server_pass = "u9gWGgSuc51VhEXGb8MfE800"
+confluence_server_publish = True
+confluence_page_hierarchy = True
+# Import enviroment settings
+# confluence_space_key = os.environ.get("confluence_server_key", "DVT")
+# confluence_server_url = os.environ.get("confluence_server_url",
+#                                        "https://minimco.atlassian.net/wiki//")
+# confluence_server_user = os.environ.get("confluence_server_user",
+#                                         'dane@minim.com')
+# confluence_server_token = os.environ.get("confluence_server_token",
+#                                          'u9gWGgSuc51VhEXGb8MfE800')
+# # confluence_ask_user = True
+# confluence_ask_password = True
+# confluence_server_pass = os.environ.get("confluence_server_pass", False)
+
+# if confluence_server_pass:
+# Publish after build, defaults to False, requires pass is set
+# confluence_publish = True
+# os.environ.get("confluence_server_publish", False)
+
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -74,8 +88,9 @@ html_themes = (
         )
 
 html_theme = os.environ.get("confluence_theme", 'sphinx_material')
-html_short_title = 'testkitdocs'
-html_static_path = ['_static']
+html_short_title = 'Automation-TestKit Docs'
+html_static_path = ['../build/html/_static']
 html_show_sourcelink = False
 html_show_sphinx = False
 html_show_copyright = False
+

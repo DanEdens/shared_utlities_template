@@ -4,26 +4,14 @@ pushd %~dp0
 
 REM Command file for Sphinx documentation
 
-if "%SPHINXBUILD%" == "" (
-	set SPHINXBUILD=sphinx-build
-)
-if "%confluence_server_url%" == "" (
-    set confluence_server_url=https://danedens.atlassian.net/wiki/home/
-)
-if "%confluence_server_key%" == "" (
-    set confluence_server_key = False
-)
-if "%confluence_server_user%" == "" (
-    set confluence_server_user = dane@minim.com
-)
-if "%confluence_server_pass%" == "" (
-    echo "Pass not set. Please set confluence_server_pass"
-    exit /B 5
-)
-if "%confluence_server_publish%" == "" (
-    echo Confluence Publish disabled 
-    set confluence_server_publish = False
-)
+set SPHINXBUILD=sphinx-build
+set confluence_server_url="https://minimco.atlassian.net/wiki/spaces/DVT/"
+set confluence_space_key = "DVT"
+set confluence_parent_page = "AutomationTest"
+set confluence_server_user = "dane@minim.com"
+set confluence_server_pass = "u9gWGgSuc51VhEXGb8MfE800"
+set confluence_server_publish = False
+set confluence_page_hierarchy = True
 
 set SOURCEDIR=source
 set BUILDDIR=build

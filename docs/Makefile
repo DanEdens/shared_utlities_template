@@ -8,10 +8,12 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
-confluence_server_url ?= https://danedens.atlassian.net/wiki/home/
-confluence_server_key ?= 
-confluence_server_user ?= danedens
-confluence_server_pass ?=
+confluence_server_url ?= https://minimco.atlassian.net/wiki
+confluence_server_key ?= DVT
+# confluence_server_user ?= True
+# confluence_server_pass ?=
+confluence_ask_user = True
+confluence_ask_password = True
 confluence_server_publish ?= False
 
 # Put it first so that "make" without argument is like "make help".

@@ -11,8 +11,7 @@ from pathlib import Path
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 
-client = mqtt.Client(
-        os.environ.get('TESTKIT_DENA', os.environ.get('USERPROFILE')))
+client = mqtt.Client(os.environ.get('TESTKIT_DENA', os.environ.get('USERPROFILE')))
 hostname = os.environ.get('AWSIP', 'localhost')
 port = int(os.environ.get('AWSPORT', 3001))
 client.connect(hostname, port)
@@ -26,7 +25,7 @@ def makeLogger(name) -> object:
     Create the project wide logger.
     Sets Output level from Argument flags and if output should be directed
     to a log file.
-    Default location is Onedrive/Scanner
+    Default location is data//FILEDATE//TestKit.log
     :param name:
     :return: Logger
     :rtype: Object

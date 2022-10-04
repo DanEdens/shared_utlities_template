@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Unittests in MinimTestKit" type="tests" factoryName="Unittests" nameIsGenerated="true">
+  <configuration default="false" name="Unittests in minimtestkit" type="tests" factoryName="Unittests" nameIsGenerated="true">
     <module name="MinimTestKit" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />

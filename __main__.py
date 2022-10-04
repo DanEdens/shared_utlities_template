@@ -67,7 +67,6 @@ if __name__ == "__main__":
     elif thread.args.post_docs:
         print('Failed')
     elif thread.args.device:
-
         DeNa = fetch_config()
     elif thread.args.test:
         print('Failed')

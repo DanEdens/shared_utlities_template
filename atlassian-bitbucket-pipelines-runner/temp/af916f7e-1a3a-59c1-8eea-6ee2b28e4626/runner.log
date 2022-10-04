@@ -1,0 +1,7 @@
+[2022-10-03 14:41:26,698] Runner version: 1.364
+[2022-10-03 14:41:26,723] Runner runtime: windows-powershell
+[2022-10-03 14:41:28,198] Starting websocket listening to RUNNER_UPDATED events.
+[2022-10-03 14:41:28,307] Updating runner status to "ONLINE" and checking for new steps assigned to the runner after 0 seconds and then every 30 seconds.
+[2022-10-03 14:41:28,458] Updating runner state to "ONLINE".
+[2022-10-03 14:41:41,244] Updating runner state to "OFFLINE".
+[2022-10-03 14:41:41,542] Shutdown completed

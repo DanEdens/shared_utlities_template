@@ -1,0 +1,1 @@
+powershell .\start.ps1 -accountUuid '{b8184dfb-0453-4d00-a8df-2d61f7efe784}' -repositoryUuid '{ad7740e5-92c5-49e6-b25c-9b467f3cde2a}' -runnerUuid '{af916f7e-1a3a-59c1-8eea-6ee2b28e4626}' -OAuthClientId miDGTP2YiRyxwFrf0qf8b7ORBUAjuCFX -OAuthClientSecret NK8E4JnTExaPvUbxdQVcfX0oQGI1yn5mL8ZRShisH3Zl1rwbnKLNzAOFwBvIHkOu -workingDirectory '..\temp'

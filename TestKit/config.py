@@ -16,11 +16,9 @@ devModeDeviceList = os.environ.get('ROOT_DIR', '~') + '/devModeDeviceList.ini'
 def postData(msgs):
     """
     Pub multible messages in same session
-    {
-        'topic':   f'testkit/config/{DeNa}/var',
-        'payload': config[DeNa]['name'],
-        'retain':  True
-    }
+    'topic':   f'testkit/config/{DeNa}/var',
+    'payload': config[DeNa]['name'],
+    'retain':  True
     :param msgs: dict
     """
     mqtt.publish.multiple(

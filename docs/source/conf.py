@@ -11,12 +11,12 @@ import sys
 
 root = os.path.abspath('../..')
 sys.path.insert(0, root)
-
+print(root)
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'MinimTestKit'
-copyright = '2022, Dan Edens'
+# copyright = '2022, Dan Edens'
 author = 'Dan Edens'
 release = '0.0.1'
 
@@ -48,15 +48,16 @@ latex_elements = {
 templates_path = ['_templates']
 exclude_patterns = ['build/*']
 
-
 SPHINXBUILD = "sphinx-build"
-confluence_server_url = "https://minimco.atlassian.net/wiki"
-confluence_space_key = "DVT"
+confluence_server_url = "https://danedens.atlassian.net/wiki/"
+confluence_space_key = "~5f36c4253e9e2e004dbeabe1"
 confluence_parent_page = "AutomationTest"
-confluence_server_user = "dane@minim.com"
-confluence_server_pass = "u9gWGgSuc51VhEXGb8MfE800"
+confluence_server_user = "danedens31@gmail.com"
+# confluence_ask_password = True
+# confluence_server_pass = "zE5g25NzyTBuYKk863St3CFC"
 confluence_server_publish = True
-confluence_page_hierarchy = True
+confluence_publish_debug = True
+# confluence_page_hierarchy = True
 # Import enviroment settings
 # confluence_space_key = os.environ.get("confluence_server_key", "DVT")
 # confluence_server_url = os.environ.get("confluence_server_url",
@@ -66,7 +67,6 @@ confluence_page_hierarchy = True
 # confluence_server_token = os.environ.get("confluence_server_token",
 #                                          'u9gWGgSuc51VhEXGb8MfE800')
 # # confluence_ask_user = True
-# confluence_ask_password = True
 # confluence_server_pass = os.environ.get("confluence_server_pass", False)
 
 # if confluence_server_pass:
@@ -93,4 +93,3 @@ html_static_path = ['../build/html/_static']
 html_show_sourcelink = False
 html_show_sphinx = False
 html_show_copyright = False
-

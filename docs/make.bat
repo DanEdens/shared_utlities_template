@@ -5,13 +5,13 @@ pushd %~dp0
 REM Command file for Sphinx documentation
 
 set SPHINXBUILD=sphinx-build
-set confluence_server_url="https://minimco.atlassian.net/wiki/spaces/DVT/"
-set confluence_space_key = "DVT"
-set confluence_parent_page = "AutomationTest"
-set confluence_server_user = "dane@minim.com"
-set confluence_server_pass = "u9gWGgSuc51VhEXGb8MfE800"
-set confluence_server_publish = False
-set confluence_page_hierarchy = True
+rem set confluence_server_url="https://minimco.atlassian.net/wiki/spaces/DVT/"
+rem set confluence_space_key = "DVT"
+rem set confluence_parent_page = "AutomationTest"
+rem set confluence_server_user = "dane@minim.com"
+rem set confluence_server_pass = "u9gWGgSuc51VhEXGb8MfE800"
+rem set confluence_server_publish = False
+rem set confluence_page_hierarchy = True
 
 set SOURCEDIR=source
 set BUILDDIR=build

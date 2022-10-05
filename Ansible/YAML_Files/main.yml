@@ -1,0 +1,43 @@
+---
+- name: Ansible SNMP Playbook
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Check the local host system description
+      hosts: testservers
+      tasks:
+        - name: Gather facts with SNMP version 2
+          community.general.snmp_facts:
+            host: '{{ inventory_hostname }}'
+            version: v2c
+            community: public
+          delegate_to: local
+          command: "python /Users/mho/Desktop/DVT/Ansible/Python_Files/SNMP_Test.py"
+          register: sysDescr
+        - debug:
+            var: sysDescr.stdout_lines
+
+
+#    #Retrieve data facts about SNMP
+#    #Data will be inserted to the ansible_facts key
+#    - name: Gather facts with SNMP version 2
+#      community.general.snmp_facts:
+#        host: '{{ inventory_hostname }}'
+#        version: v2c
+#        community: public
+#      delegate_to: local
+#
+#    #ensure port is open
+#  - ansible.builtin.wait_for:
+#      host: "{{ inventory_hostname }}"
+#      port: 22
+#    delegate_to: localhost
+#
+#  #ensure web service returns
+#  - action: uri url=https://www.example.com return_content=yes
+#    register: webpage
+#
+#  - fail:
+#      msg: 'service is not happy'
+#    when: "'AWESOME' not in webpage.content"

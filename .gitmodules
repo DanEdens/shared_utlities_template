@@ -1,3 +1,6 @@
 [submodule "cdroutertestkit"]
 	path = cdroutertestkit
 	url = https://DanEdens@bitbucket.org/danedens/cdroutertestkit.git
+[submodule "cdrouter.py"]
+	path = cdrouter_py
+	url = https://github.com/qacafe/cdrouter.py.git

@@ -16,6 +16,7 @@ Tool                      Docs
 Explored Github repos     https://github.com/stars/DanEdens/lists/wifi
 Confluence                https://github.com/stars/DanEdens/lists/confluence
 Jenkins                   https://github.com/stars/DanEdens/lists/jenkins
+Jenkins examples          https://gist.github.com/merikan/228cdb1893fca91f0663bab7b095757c
 CDRouter examples         https://github.com/qacafe/cdrouter.py
 Python Jira               https://jira.readthedocs.io/
 Selenium                  https://www.selenium.dev/

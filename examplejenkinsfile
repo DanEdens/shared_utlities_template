@@ -1,0 +1,82 @@
+pipeline {
+    agent any
+    environment {
+        PIPELINE_SLACK_CHANNEL = "#engineering";
+        PIPELINE_SONARQUBE_SERVER = "sonarqube-staging";
+        PIPELINE_SONARQUBE_SCANNER = "SonarQube Scanner";
+    }
+    stages {
+        stage('SonarQube Variable Init') {
+            steps {
+                script {
+                    env.SONAR_PROJECT_KEY = sh(script: """#!/bin/bash
+                        grep -E '^sonar\\.projectKey=' sonar-project.properties | awk -F'=' '{ print \$2; }' | tr -d '\\n'
+                        """, returnStdout: true);
+                    withSonarQubeEnv("${env.PIPELINE_SONARQUBE_SERVER}") {
+                        env.SONAR_PROJECT_DASHBOARD = "${SONAR_HOST_URL}/dashboard/index/${env.SONAR_PROJECT_KEY}";
+                    }
+                    env.SONAR_PROJECT_MESSAGE = "${JOB_NAME}\n<${BUILD_URL}|Jenkins Job> | <${env.SONAR_PROJECT_DASHBOARD}|SonarQube Project Dashboard>";
+                }
+            }
+        }
+        stage('SonarQube Scan') {
+            options {
+                timeout(time: 5, unit: 'MINUTES');
+            }
+            when {
+                branch 'master';
+            }
+            steps {
+                script {
+                    def scannerHome = tool "${env.PIPELINE_SONARQUBE_SCANNER}";
+
+                    withSonarQubeEnv("${env.PIPELINE_SONARQUBE_SERVER}") {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+
+                    sleep(15); // This is required because SonarQube cannot reach Jenkins, and the polling is normally done via webhook.
+                    def qualitygate = waitForQualityGate();
+                    if (qualitygate.status != "OK") {
+                        error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}";
+                    }
+                }
+            }
+            post {
+                failure {
+                    slackSend(channel: "${env.PIPELINE_SLACK_CHANNEL}", color: '#FF0000', message: "SonarQube Scan Failed for ${env.SONAR_PROJECT_MESSAGE}")
+                }
+            }
+        }
+        stage('Jenkins PR test') {
+            when {
+                changeRequest()
+            }
+            steps {
+                script {
+                    pullRequest.createStatus(status: 'pending',
+                         context: 'jenkins-pr-test',
+                         description: 'All things are something',
+                         targetUrl: "${env.BUILD_URL}");
+                }
+            }
+            post {
+                failure {
+                    script {
+                        pullRequest.createStatus(status: 'failure',
+                             context: 'jenkins-pr-test',
+                             description: "Something isn't cool.",
+                             targetUrl: "${env.BUILD_URL}");
+                    }
+                }
+                success {
+                    script {
+                        pullRequest.createStatus(status: 'success',
+                             context: 'jenkins-pr-test',
+                             description: 'Everything is awesome?',
+                             targetUrl: "${env.BUILD_URL}");
+                    }
+                }
+            }
+        }
+    }
+}

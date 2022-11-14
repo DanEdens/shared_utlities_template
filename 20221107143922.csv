@@ -1,0 +1,13 @@
+id,seq,loop,result,retries,started,duration,flagged,name,description,skip_name,skip_reason,log,note
+20221107143922,1,1,pass,0,2022-11-07 14:39:24.000487 -0500 EST,45,false,start,CDRouter Startup,,,start.txt,
+20221107143922,2,1,pass,0,2022-11-07 14:40:09.000586 -0500 EST,0,false,wifi_1,Graceful wireless LAN client restart,,,wifi_1.txt,
+20221107143922,3,1,pass,0,2022-11-07 14:40:09.000874 -0500 EST,1,false,wifi_2,Restart wireless LAN client without releasing address,,,wifi_2.txt,
+20221107143922,4,1,pass,0,2022-11-07 14:40:10.000163 -0500 EST,0,false,wifi_3,Restart wireless LAN client without releasing or obtaining a new address,,,wifi_3.txt,
+20221107143922,5,1,pass,0,2022-11-07 14:40:10.000307 -0500 EST,1,false,wifi_10,Verify connectivity using all wifi modes advertised by the DUT,,,wifi_10.txt,
+20221107143922,6,1,pass,0,2022-11-07 14:40:11.000147 -0500 EST,4,false,wifi_30,WiFi association stress test,,,wifi_30.txt,
+20221107143922,7,1,pass,0,2022-11-07 14:40:15.000181 -0500 EST,4,false,wifi_40,WiFi SSID scan test,,,wifi_40.txt,
+20221107143922,8,1,skipped,0,0000-12-31 19:03:58 -0456 LMT,0,false,wifi_50,WiFi Band Steering test,incompatible-with-80211-band-steering,Skipping band steering tests,,
+20221107143922,9,1,pass,0,2022-11-07 14:40:19.000252 -0500 EST,32,false,cdrouter_scale_1,Verify all DHCP clients are operational,,,cdrouter_scale_1.txt,
+20221107143922,10,1,pass,0,2022-11-07 14:40:51.000246 -0500 EST,58,false,cdrouter_scale_2,Verify all DHCP clients with multiple TCP connections,,,cdrouter_scale_2.txt,
+20221107143922,11,1,fail,0,2022-11-07 14:41:49.00079 -0500 EST,27,false,cdrouter_scale_3,Verify all DHCP clients with single UDP connection,,,cdrouter_scale_3.txt,
+20221107143922,12,1,pass,0,2022-11-07 14:42:16.000308 -0500 EST,0,false,final,CDRouter Shutdown Sequence,,,final.txt,

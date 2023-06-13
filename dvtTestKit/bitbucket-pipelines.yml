@@ -1,0 +1,12 @@
+pipelines:
+  default:
+    - step:
+        name: Step 1
+        runs-on:
+          - 'windows'
+          - 'self.hosted'
+          - 'browserautomation'
+          - 'canton'
+          - 'guitestkit'
+        script:
+          - python -u docs\source\conf.py

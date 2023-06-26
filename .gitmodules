@@ -11,3 +11,6 @@
 [submodule "dvtTestKit"]
 	path = dvtTestKit
 	url = https://DanEdens@bitbucket.org/danedens/dvt_tk.git
+[submodule "apptestkit"]
+	path = apptestkit
+	url = https://DanEdens@bitbucket.org/danedens/apptestkit.git

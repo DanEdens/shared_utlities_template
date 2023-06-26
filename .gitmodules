@@ -8,3 +8,6 @@
 [submodule "guitestkit"]
 	path = guitestkit
 	url = https://DanEdens@bitbucket.org/danedens/guitestkit.git
+[submodule "dvtTestKit"]
+	path = dvtTestKit
+	url = https://DanEdens@bitbucket.org/danedens/dvt_tk.git

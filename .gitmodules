@@ -14,3 +14,6 @@
 [submodule "apptestkit"]
 	path = apptestkit
 	url = https://DanEdens@bitbucket.org/danedens/apptestkit.git
+[submodule "autodocsistestkit"]
+	path = autodocsistestkit
+	url = https://DanEdens@bitbucket.org/danedens/autodocsistestkit.git

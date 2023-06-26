@@ -2,9 +2,9 @@
 	path = cdroutertestkit
 	url = https://bitbucket.org/danedens/cdroutertestkit.git
 	branch = main
-[submodule "QAcafe_cdrouter"]
-	path = QAcafe_cdrouter
-	url = https://github.com/qacafe/cdrouter.py.git
+[submodule "AgentJenkins"]
+	path = AgentJenkins
+	url =  https://DanEdens@bitbucket.org/danedens/agentjenkins.git
 [submodule "guitestkit"]
 	path = guitestkit
 	url = https://DanEdens@bitbucket.org/danedens/guitestkit.git

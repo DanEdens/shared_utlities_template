@@ -1,4 +1,0 @@
-id,seq,loop,result,retries,started,duration,flagged,name,description,skip_name,skip_reason,log,note
-20221107144500,1,1,pass,0,2022-11-07 14:45:02.000327 -0500 EST,46,false,start,CDRouter Startup,,,start.txt,
-20221107144500,2,1,pass,0,2022-11-07 14:45:48.000446 -0500 EST,46,false,cdrouter_scale_3,Verify all DHCP clients with single UDP connection,,,cdrouter_scale_3.txt,
-20221107144500,3,1,pass,0,2022-11-07 14:46:34.00012 -0500 EST,0,false,final,CDRouter Shutdown Sequence,,,final.txt,

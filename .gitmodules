@@ -17,3 +17,6 @@
 [submodule "autodocsistestkit"]
 	path = autodocsistestkit
 	url = https://DanEdens@bitbucket.org/danedens/autodocsistestkit.git
+[submodule "qa-tester-v2-bitagent"]
+	path = qa-tester-v2-bitagent
+	url = https://DanEdens@bitbucket.org/danedens/qa-tester-v2-bitagent.git

@@ -4,7 +4,7 @@
 	branch = main
 [submodule "AgentJenkins"]
 	path = AgentJenkins
-	url =  https://DanEdens@bitbucket.org/danedens/agentjenkins.git
+	url = https://DanEdens@bitbucket.org/danedens/agentjenkins.git
 [submodule "guitestkit"]
 	path = guitestkit
 	url = https://DanEdens@bitbucket.org/danedens/guitestkit.git
